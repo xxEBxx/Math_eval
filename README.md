@@ -84,7 +84,7 @@ The `to_pow` function posed unique challenges, particularly in computing fractio
 
 To approximate fractional components (e.g., 0.xxx), I employed a binary search-like strategy. By iteratively applying multiplication, division, or none(just waiting for next iteration) operations, I fine-tuned the approximation until achieving the desired precision. This approach facilitated accurate computation of non-integer powers, offering versatility in handling a wide range of mathematical expressions.
 
-By employing these innovative techniques, the `to_atan` and `to_pow` functions (found at [4functions.h](https://github.com/xxEBxx/Math_eval/blob/main/LUT/Look_Up_Table_generator.cpp)) provide efficient and accurate solutions, enhancing the overall effectiveness of the Math Expression Evaluator.
+By employing these innovative techniques, the `to_atan` and `to_pow` functions (found at [4functions.h](https://github.com/xxEBxx/Math_eval/blob/main/4functions.h)) provide efficient and accurate solutions, enhancing the overall effectiveness of the Math Expression Evaluator.
 
 
 # 🎉Conclusion
