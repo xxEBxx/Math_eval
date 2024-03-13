@@ -25,7 +25,7 @@ To build the Math Expression Evaluator, follow these steps:
     cd Math_eval
     ```
 
-3. Build the project:
+3. Build the project (you may skip this step):
 
     ```bash
     make build
@@ -36,7 +36,11 @@ To build the Math Expression Evaluator, follow these steps:
 To run the Math Expression Evaluator, use the following command:
 
 ```bash
-binary 'expression'
+binary 
+```
+After enter you will get this format :
+```bash
+Enter your expression: 'expression'
 ```
 Replace 'expression' with the math expression you want to evaluate (without the single quotes).
 
