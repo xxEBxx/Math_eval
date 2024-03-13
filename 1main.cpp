@@ -11,18 +11,20 @@ int main() {
         getline(cin, expression);
 
         vector<string> tokens= tokenize(expression);
-        for(int i=0;i<tokens.size();i++){
+        /*for(int i=0;i<tokens.size();i++){
             cout <<tokens[i]<<" ";
-        }
-        cout<<endl;
+        }*/
         string result = parse_syntax(tokens);
-        cout << "Syntax check passed. Result: " << result << endl;
-        vector<string> postfix= to_postfix(tokens);
-        for(string x:postfix){
-            cout<<x<<" ";
-        }
+        /*
         cout<<endl;
-        cout<<"here is result : "<<calculate(postfix)<<endl;
+        cout << "Syntax check passed. Result: " << result << endl;*/
+        vector<string> postfix= to_postfix(tokens);
+        /*for(string x:postfix){
+            cout<<x<<" ";
+        }*/
+        cout<<endl;
+        string res=calculate(postfix);
+        cout<<"Here is the result : "<<res<<endl;
     } catch (const MyError& e) {
         std::cerr << "Error: " << e.message << std::endl;
         return 1; // Return a non-zero value to indicate failure

@@ -94,7 +94,7 @@ double binaryPower(double base, int exponent) {
 }
 double to_sqrt(double x) {
     if (x < 0) {
-        //throw MyError("Cannot compute square root of a negative number");
+        throw MyError("Cannot compute square root of a negative number");
     }
 
     double guess = x / 2.0; // Initial guess

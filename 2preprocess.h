@@ -49,6 +49,12 @@ vector<string> tokenize(string s){
         if(tokens[i]=="-" && !isdigit(tokens[i-1][0])){
             tokens.insert(tokens.begin()+i,"0");
         }
+        else if(tokens[i-1]==")" && isdigit(tokens[i][0])
+        || tokens[i]=="(" && isdigit(tokens[i-1][0])
+        || tokens[i]=="(" && tokens[i-1]==")"){
+            tokens.insert(tokens.begin()+i,"*");
+        }
+
     }
     return tokens;
 }
