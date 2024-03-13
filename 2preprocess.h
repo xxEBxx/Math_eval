@@ -93,3 +93,54 @@ string parse_syntax(vector<string>& tokens) {
     }
     return "OK";
 }
+vector<string> to_postfix(const std::vector<std::string>& tokens) {
+    //string postfix = "";
+    vector<string> postfix;
+    stack<string> s;
+
+    for (const std::string& token : tokens) {
+        if (isdigit(token[0])) {
+            postfix.push_back(token);
+        }
+        else if (is_operator(token[0])) {
+            while (!s.empty() && precedence(token) <= precedence(s.top())) {
+                postfix.push_back(s.top());
+                s.pop();
+            }
+            s.push(token);
+        }
+        else if (token[0] == '(') {
+            s.push("(");
+        }
+        else if (token[0] == ')') {
+            while (!s.empty() && s.top()[0] != '(') {
+                postfix.push_back(s.top());
+                s.pop();
+            }
+            if (!s.empty() && s.top()[0] == '(') {
+                s.pop(); // Discard the left parenthesis
+            }
+            if (!s.empty() && is_function1(s.top())) {
+                postfix.push_back(s.top());
+                s.pop();
+            }
+        }
+        else if (is_function1(token)) {
+            s.push(token);
+        }
+        else {
+            postfix.push_back(s.top());
+        }
+    }
+
+    while (!s.empty()) {
+        postfix.push_back(s.top());
+        s.pop();
+    }
+    for(int i=0;i<postfix.size();i++){
+        if(postfix[i]=="," || postfix[i]=="("){
+            postfix.erase(postfix.begin()+i);
+        }
+    }
+    return postfix;
+}
