@@ -1,7 +1,7 @@
 #include "2preprocess.h"
 #include "LUT/LUT_definition.h"
 # define pi 3.141592653589793238462643383279502884L
- LUT
+
 double adjust_to_range(double angle,double m=pi) {
     //make the angle between -pi and pi
     while (angle > m) {
