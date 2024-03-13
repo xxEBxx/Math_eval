@@ -15,6 +15,8 @@ double adjust_to_range(double angle,double m=pi) {
 
 double to_sin(double a){
     a= adjust_to_range(a);
+    if(a < 0)return -to_sin(-a);
+    if(a > pi/2) return to_sin(pi - a);
     auto lower=map_sin.lower_bound(a);
     auto upper = lower--;
     double x0 = lower->first;
@@ -41,6 +43,8 @@ double to_asin(double a){
 }
 double to_cos(double a){
     a= adjust_to_range(a);
+    if(a < 0) return to_cos(-a);
+    if(a>pi/2) return -to_cos(pi-a);
     auto lower=map_cos.lower_bound(a);
     auto upper = lower--;
     double x0 = lower->first;

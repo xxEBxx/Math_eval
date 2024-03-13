@@ -42,12 +42,20 @@ vector<string> tokenize(string s){
             i++;
         }
     }
+    if(tokens[0]=="-"){
+        tokens.insert(tokens.begin(),"0");
+    }
+    for(int i=1;i<tokens.size();i++){
+        if(tokens[i]=="-" && !isdigit(tokens[i-1][0])){
+            tokens.insert(tokens.begin()+i,"0");
+        }
+    }
     return tokens;
 }
 
 string parse_syntax(vector<string>& tokens) {
     int n = tokens.size();
-    if(is_operator(tokens[0][0])){
+    if(tokens[0][0]=='*' || tokens[0][0]=='/'){
         throw MyError("Can't start with operator :( ");
     }
     if(is_operator(tokens[n-1][0])){
@@ -91,6 +99,7 @@ string parse_syntax(vector<string>& tokens) {
     if (!parenthesis.empty()) {
         throw MyError("Unbalanced parenthesis");
     }
+
     return "OK";
 }
 vector<string> to_postfix(const std::vector<std::string>& tokens) {
@@ -98,7 +107,7 @@ vector<string> to_postfix(const std::vector<std::string>& tokens) {
     vector<string> postfix;
     stack<string> s;
 
-    for (const std::string& token : tokens) {
+    for (const string& token : tokens) {
         if (isdigit(token[0])) {
             postfix.push_back(token);
         }

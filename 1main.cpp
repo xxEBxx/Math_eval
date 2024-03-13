@@ -11,7 +11,10 @@ int main() {
         getline(cin, expression);
 
         vector<string> tokens= tokenize(expression);
-
+        for(int i=0;i<tokens.size();i++){
+            cout <<tokens[i]<<" ";
+        }
+        cout<<endl;
         string result = parse_syntax(tokens);
         cout << "Syntax check passed. Result: " << result << endl;
         vector<string> postfix= to_postfix(tokens);

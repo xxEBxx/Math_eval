@@ -7,9 +7,9 @@ const double PI = 3.14159265358979323846;
 using namespace std;
 std::map<double, double> createSinLookupTable(int steps) {
     std::map<double, double> sinTable;
-    double stepSize = 2 * PI / steps;
+    double stepSize = PI / (2*steps);
     for (int i = 0; i <= steps; ++i) {
-        double angle = i * stepSize-PI;
+        double angle = i * stepSize ;
         sinTable[angle] = std::sin(angle);
     }
     return sinTable;
@@ -21,13 +21,14 @@ void printLookupTable(const std::map<double, double>& sinTable) {
         //std::cout << std::setw(10) << entry.first << std::setw(15) << entry.second << std::endl;
         cout<<"{"<<entry.first<<","<<entry.second<<"},"<<endl;
     }
+    cout<<"};";
 }
 
 map<double, double> createCosLookupTable(int steps) {
     std::map<double, double> cosTable;
-    double stepSize = 2 * PI / steps;
+    double stepSize = PI / (2*steps);
     for (int i = 0; i <= steps; ++i) {
-        double angle = i * stepSize-PI;
+        double angle = i * stepSize;
         cosTable[angle] = std::cos(angle);
     }
     return cosTable;
@@ -50,8 +51,13 @@ int main() {
     std::map<double, double> asinTable = createAsinLookupTable(steps);
 
     // Print the sine lookup table
-    //printLookupTable(sinTable);
+    cout<<"map<double,double> map_sin ={";
+    printLookupTable(sinTable);
+    cout<<"map<double,double> map_asin ={";
     printLookupTable(asinTable);
+    cout<<"map<double,double> map_cos ={";
+    printLookupTable(cosTable);
+
 
     return 0;
 }

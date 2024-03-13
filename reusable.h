@@ -12,7 +12,7 @@ bool is_function1(string a){
     return false;
 }
 int precedence(string i){
-    if(i=="+" || i=="+") return 1;
+    if(i=="+" || i=="-") return 1;
     if(i=="*" || i=="/") return 2;
     if (is_function1(i) || i=="(") return 0;
 }
